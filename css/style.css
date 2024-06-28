@@ -49,27 +49,75 @@ h1 {
     flex-direction: column;
     justify-content: space-evenly;
     color: var(--color-5);
- 
+    
 }
 .info__detail{
     width: 200px;
     height: 200px;
     box-shadow: 5px 5px 10px var(--color-4);
+    
+}
+.name__rocket {
+        text-align: center;
+        padding-top: 0px;
+        font-size: 10vh;
+        font-family: sans-serif;
+        color: white;
+        text-shadow: 3px 3px 0 #000;
+}
+.apilar{
+    display: flex;
+    flex-direction: column;
+}
+/* Estilos básicos para el velocímetro */
+.velocimetro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
 
-}
-.tacometro{
-display: flex;
-flex-direction: column;
-align-items: center;
-/* background: red; */
-gap: 20px;
-}
-.medidor{
+.velocimetro-container {
+    position: relative;
+    width: 150px; /* Ajusta el tamaño del velocímetro según necesites */
     height: 150px;
-    width: 150px;
+    background: radial-gradient(circle, var(--color-1), var(--color-2));
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.velocimetro-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 4px;
+    background-color: var(--color-4);
+}
+
+.aguja {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(0deg); /* Inicialmente apunta hacia arriba */
+    width: 4px;
+    height: 60px; /* Largo de la aguja */
+    background-color: red;
+    border-radius: 2px;
+}
+
+
+.contenedores {
+    display: flex;
+    justify-content: space-between;
+    padding: 10vh;
+}    transform: translateX(-50%) rotate(0deg); /* Inicialmente apunta hacia arriba */
 }
 .lista{
     display: flex;
+    justify-content: space-between;
     gap: 20px;
     
 }
