@@ -44,11 +44,12 @@ h1 {
     justify-content: space-evenly;
     
 }
-.info{
+.rockects{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     color: var(--color-5);
+    overflow-y: scroll;
     
 }
 .info__detail{
@@ -57,14 +58,7 @@ h1 {
     box-shadow: 5px 5px 10px var(--color-4);
     
 }
-.name__rocket {
-        text-align: center;
-        padding-top: 0px;
-        font-size: 10vh;
-        font-family: sans-serif;
-        color: white;
-        text-shadow: 3px 3px 0 #000;
-}
+
 .apilar{
     display: flex;
     flex-direction: column;
@@ -113,8 +107,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     padding: 10vh;
-}    transform: translateX(-50%) rotate(0deg); /* Inicialmente apunta hacia arriba */
-}
+}    
 .lista{
     display: flex;
     justify-content: space-between;
