@@ -34,7 +34,7 @@ body
     text-align: center;
     margin-top: 20%;
 }
-h1 {
+.name__Rocket {
     color: var(--color-5) ;
     display: flex;
     justify-content: center;
