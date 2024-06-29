@@ -15,7 +15,7 @@ body
     width: 100%;
     height: 100%;
     overflow: hidden;
-/* background: linear-gradient(to right, var(--color-1), var(--color-2)); */
+background: linear-gradient(to right, var(--color-1), var(--color-2));
 }
 .video-background {
     position: absolute;
@@ -33,35 +33,41 @@ body
     color: white;
     text-align: center;
     margin-top: 20%;
+    display: flex;
+    background: red;
 }
 .name__Rocket {
     color: var(--color-5) ;
     display: flex;
-    justify-content: center;
-}
-.contenedores{
-    display: flex;
-    justify-content: space-evenly;
-    
-}
-.rockects{
-    display: flex;
     flex-direction: column;
+    justify-content: center;
+    background: red;
+}
+.vistas{
+    display: flex;
+    background: pink;
+}
+.rockets{
+    display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
+    gap: 20px;
+    background: red;
     color: var(--color-5);
     overflow-y: scroll;
-    
-}
-.info__detail{
-    width: 200px;
-    height: 200px;
-    box-shadow: 5px 5px 10px var(--color-4);
+    overflow: hidden;
+    background: black;
+    margin-left: 50px;
+    margin-right: 50px;
     
 }
 
 .apilar{
     display: flex;
     flex-direction: column;
+    background: blue;
+    margin-right: 250px;
+
 }
 /* Estilos básicos para el velocímetro */
 .velocimetro {
@@ -75,53 +81,35 @@ body
     position: relative;
     width: 150px; /* Ajusta el tamaño del velocímetro según necesites */
     height: 150px;
-    background: radial-gradient(circle, var(--color-1), var(--color-2));
+    background: radial-gradient(circle, var(--color-4), var(--color-2));
     border-radius: 50%;
     overflow: hidden;
 }
 
 .velocimetro-background {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
     height: 4px;
-    background-color: var(--color-4);
+    background-color: var(--color-4); */
 }
 
-.aguja {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform-origin: bottom center;
-    transform: translateX(-50%) rotate(0deg); /* Inicialmente apunta hacia arriba */
-    width: 4px;
-    height: 60px; /* Largo de la aguja */
-    background-color: red;
-    border-radius: 2px;
-}
-
-
-.contenedores {
-    display: flex;
-    justify-content: space-between;
-    padding: 10vh;
-}    
-.lista{
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    
-}
 .ship{
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
+}
+.informacion{
+    display: flex;
+    flex-direction: column;
+    color: var(--color-5);
 }
 .valores{
     display: flex;
     flex-direction: column;
     color: var(--color-5);
+    margin-right: 50px;
 }
 .Bar{
     color: var(--color-5);

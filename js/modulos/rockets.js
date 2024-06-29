@@ -26,21 +26,108 @@ export async function fetchData(page = 1) {
     }
 }
 
+export function createNameRocketHTML(rockets) {
+    let template = "";
+
+    rockets.forEach(rocket => {
+        template += `
+               <div class="name__Rocket">
+        <h1>${rocket.name}</h1>
+    </div>
+        `;
+    });
+
+    return template;
+}
+
 export function createRocketHTML(rockets) {
     let template = "";
 
     rockets.forEach(rocket => {
         template += `
-        
+        <div class="vistas">
             <div class="rocket">
                 <div class="rockets">
                     <h2>${rocket.country}</h2>
                     <p>${rocket.description}</p>
-                    <p>The estimated cost per rocket launch ${rocket.cost_per_launch}</p>
-                    <p>The date of the first flight of the rocket ${rocket.first_flight}</p>
-                    <p> Read more about the rocket ${rocket.wikipedia}
+                    <p>The estimated cost per rocket launch:<br> ${rocket.cost_per_launch}</p>
+                    <p>The date of the first flight of the rocket:<br> ${rocket.first_flight}</p>
+                    <p> Read more about the rocket: <br> ${rocket.wikipedia}
                 </div>
             </div>
+            <div class="apilar">
+            <div class="fila1">
+                <section class="velocimetro">
+                    <div class="velocimetro-container">
+                        <div class="velocimetro-background"></div>
+                        <div class="aguja" id="aguja1"></div>
+                    </div>
+                    <div class="velocimetro-container">
+                        <div class="velocimetro-background"></div>
+                        <div class="aguja" id="aguja2"></div>
+                    </div>
+        </div>
+        <div class="fila2">
+                    <section class="velocimetro">
+                    <div class="velocimetro-container">
+                        <div class="velocimetro-background"></div>
+                        <div class="aguja" id="aguja6"></div>
+                    </div>
+                    <img  class="ship" src="storage/images/ship.png" alt="">
+                    <div class="informacion">
+                       <h3>engine information<h3/>
+                      <div>
+                       <h3> type:</h3>
+                       <p>${rocket.engines.type}</p>
+                    </div>
+                     <div>
+                       <h3>Maximum power loss </h3>
+                       <p>${rocket.engines.engine_loss_max}</p>
+                    </div>
+                      <div>
+                       <h3>Engine availability </h3>
+                       <p>${rocket.engines.layout}</p>
+                    </div>
+                    <div>
+                        <h3>Number of engines </h3>
+                       <p>${rocket.engines.engines}</p>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+        <section class="valores">
+            <h2>inertial velocity</h2>
+            <div class="Bar">
+                <img src="storage/images/Bar.svg" alt="">
+                <h3>7.68 km/s</h3>
+            </div>
+            <h2>altitude</h2>
+            <div class="Bar">
+                <img src="storage/images/Bar.svg" alt="">
+                <h3>390.0 km</h3>
+            </div>
+            <h2>apogee</h2>
+            <div class="Bar">
+                <img src="storage/images/Bar.svg" alt="">
+                <h3>404.4 km</h3>
+            </div>
+            <h2>perigee</h2>
+            <div class="Bar">
+                <img src="storage/images/Bar.svg" alt="">
+                <h3>  389.4 km</h3>
+            </div>
+            <h2>inclination</h2>
+            <div class="Bar">
+                <img src="storage/images/Bar.svg" alt="">
+                <h3>51.67º</h3>
+            </div>
+            <h2>Range to iss</h2>
+            <div class="Bar">
+                <img src="storage/images/Bar.svg" alt="">
+                <h3>0.02</h3>
+            </div>
+        </section>
         `;
     });
 
