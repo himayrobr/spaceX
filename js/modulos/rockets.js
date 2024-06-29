@@ -68,13 +68,34 @@ export function createRocketHTML(rockets) {
                     </div>
         </div>
         <div class="fila2">
-                    <section class="velocimetro">
-                    <div class="velocimetro-container">
-                        <div class="velocimetro-background"></div>
-                        <div class="aguja" id="aguja6"></div>
+                     <div class="informacion">
+                       <h3>INFORMATION ROCKET<h3/>
+                      <div>
+                       <h3> type:</h3>
+                       <p>${rocket.type}</p>
+                    </div>
+                     <div>
+                       <h3>Rocket in service </h3>
+                       <p>${rocket.active}</p>
+                    </div>
+                      <div>
+                       <h3>Number of stages </h3>
+                       <p>${rocket.stages}</p>
+                    </div>
+                    <div>
+                        <h3>Number of propellants </h3>
+                       <p>${rocket.boosters}</p>
+                    </div>
+                    <div>
+                        <h3>Landing legs</h3>
+                       <p>${rocket.landing_legs.number}</p>
+                    </div>
+                     <div>
+                        <h3>Leg material</h3>
+                       <p>${rocket.landing_legs.material}</p>
                     </div>
                     <img  class="ship" src="storage/images/ship.png" alt="">
-                    <div class="informacion">
+                    <div class="informacion2">
                        <h3>engine information<h3/>
                       <div>
                        <h3> type:</h3>
@@ -90,7 +111,15 @@ export function createRocketHTML(rockets) {
                     </div>
                     <div>
                         <h3>Number of engines </h3>
-                       <p>${rocket.engines.engines}</p>
+                       <p>${rocket.engines.number}</p>
+                    </div>
+                    <div>
+                        <h3>Stage 1 fuel</h3>
+                       <p>${rocket.engines.propellant_1}</p>
+                    </div>
+                     <div>
+                        <h3>Stage 2 fuel</h3>
+                       <p>${rocket.engines.propellant_2}</p>
                     </div>
 
                 </section>
