@@ -7,7 +7,25 @@
 
     font-family: "Roboto-Regular";
 }
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
 
+/* Track (fondo de la barra) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
+}
+
+/* Handle (el 'botón' deslizante) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color del 'botón' de desplazamiento */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+/* Handle al estar en hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cambia el color al hacer hover */
+}
 body 
 {
     margin: 0;
@@ -43,14 +61,14 @@ body
     justify-content: center;
     text-transform: uppercase;
     /* background: red; */
+    margin-bottom: 30px;
 }
 .vistas{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 70px;
-    margin-right: 70px;
-    background: orange;
+    margin: 0 50px;
+    /* background: orange; */
 
 }
 .rockets{
@@ -58,13 +76,12 @@ body
     justify-content: space-between;
     flex-direction: column;
     align-items: flex-start ;
-    background: green;
     color: var(--color-5);
     overflow-y: scroll;
     overflow: hidden;
-    background: black;
+    /* background: black; */
     margin-left: 10px;
-    margin-right: 200px;
+    gap: 50px;
     
     
 }
@@ -72,56 +89,72 @@ body
 .apilar{
     display: flex;
     flex-direction: column;
-    background: blue;
+    /* background:red; */
     margin-right:250px;
 
 }
 .fila1{
-    background: red;
+    /* background: red; */
 
 
 }
 /* Estilos básicos para el velocímetro */
 .velocimetro {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 200px;
+    margin-left: 70px;
     margin-right: 100px;
-    background:blueviolet;
+    /* background:blueviolet; */
+    margin-bottom: 100px;
+    
 }
 
 .velocimetro-container {
     position: relative;
-    width: 100px; /* Ajusta el tamaño del velocímetro según necesites */
-    height: 100px;
+    width: 130px; /* Ajusta el tamaño del velocímetro según necesites */
+    height: 130px;
     background: radial-gradient(circle, var(--color-4), var(--color-2));
     border-radius: 50%;
     overflow: hidden;
+    color: var(--color-5);
+    display: flex;
+    align-items: center;
+    
+
 }
 
 .velocimetro-background {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    height: 4px;
-    background-color: var(--color-4); */
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+ 
 }
 
 .fila2{
-    background: red;
+    /* background: red; */
     display: flex;
     flex-direction: row;
     margin-right: 10px;
+    gap: 20px;
+  
 }
 
-
+.imagenes{
+    display: flex;
+    overflow-x:scroll;
+    width: 340px;
+    height: 340px;
+    gap: 10px;
+    
+  
+}
 .ship{
     background: silver;
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
 }
 .informacion{
     display: flex;
@@ -129,7 +162,7 @@ body
     color: var(--color-5);
     overflow-y: scroll;
     overflow: hidden;
-    background:violet;
+    /* background:violet; */
 }
 .informacion2{
     display: flex;
@@ -137,14 +170,15 @@ body
     color: var(--color-5);
     overflow-y: scroll;
     overflow: hidden;
-    background: blue;
+    /* background: blue; */
 }
+
 .valores{
     display: flex;
     flex-direction: column;
     color: var(--color-5);
     margin-right: 50px;
-    background: red;
+    /* background: red; */
 }
 .Bar{
     color: var(--color-5);

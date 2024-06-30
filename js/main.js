@@ -1,5 +1,3 @@
-// main.js
-
 import { fetchData, createNameRocketHTML, createRocketHTML} from './modulos/rockets.js';
 
 document.addEventListener('DOMContentLoaded', async () => {

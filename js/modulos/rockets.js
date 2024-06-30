@@ -19,7 +19,7 @@ export async function fetchData(page = 1) {
         }
 
         const data = await response.json();
-        return data.docs; // Asumiendo que los datos están en la propiedad 'docs' de la respuesta
+        return data.docs; 
     } catch (error) {
         console.error("Error fetching data:", error);
         return [];
@@ -50,11 +50,18 @@ export function createRocketHTML(rockets) {
                 <div class="fila1">
                     <section class="velocimetro">
                         <div class="velocimetro-container">
-                            <div class="velocimetro-background"></div>
-                            <div class="aguja" id="aguja1"></div>
+                            <div class="velocimetro-background">
+                            <h3>Atmospheric acceleration</h3>
+                            <p>${rocket.first_stage.thrust_sea_level.kN} kn</p>
+                             <p>${rocket.first_stage.thrust_sea_level.lbf} Lbf</p>                         
+                            </div>                         
                         </div>
                         <div class="velocimetro-container">
-                            <div class="velocimetro-background"></div>
+                            <div class="velocimetro-background">
+                            <h3>Atmospheric acceleration</h3>
+                            <p>${rocket.first_stage.thrust_vacuum.kN} kn</p>
+                             <p>${rocket.first_stage.thrust_vacuum.lbf} Lbf</p
+                            </div>
                             <div class="aguja" id="aguja2"></div>
                         </div>
                     </section>
@@ -87,7 +94,11 @@ export function createRocketHTML(rockets) {
                             <p>${rocket.landing_legs.material}</p>
                         </div>
                         </div>
-                        <img class="ship" src="storage/images/ship.png" alt="">
+                   <div class="imagenes">
+                        ${Array.isArray(rocket.flickr_images) ? rocket.flickr_images.map(img => `
+                            <img class="ship" src="${img}" alt="">
+                        `).join('') : `<img class="ship" src="${rocket.flickr_images}" alt="">`}
+                    </div>
                     <div class="informacion2">
                         <h3>ENGINE INFORMATION</h3>
                         <div>
@@ -117,37 +128,36 @@ export function createRocketHTML(rockets) {
                     </div>
                 </div>
             </div>
-        </div>
         <section class="valores">
-            <h2>Inertial velocity</h2>
+            <h2>MASS</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>7.68 km/s</h3>
+                <h3>${rocket.mass.kg}</h3>
             </div>
-            <h2>Altitude</h2>
+            <h2>DIAMETRE</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>390.0 km</h3>
+                <h3>${rocket.diameter.meters}</h3>
             </div>
-            <h2>Apogee</h2>
+            <h2>height</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>404.4 km</h3>
+                <h3>${rocket.height.meters}</h3>
             </div>
-            <h2>Perigee</h2>
+            <h2>first_stags</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>389.4 km</h3>
+                <h3>${rocket.first_stage.thrust_sea_level.kN}</h3>
             </div>
-            <h2>Inclination</h2>
+            <h2>lbf</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>51.67º</h3>
+                <h3>${rocket.first_stage.thrust_sea_level.kN}</h3>
             </div>
             <h2>Range to ISS</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>0.02</h3>
+                <h3>${rocket.reusable}</h3>
             </div>
         </section>
     `).join('');
