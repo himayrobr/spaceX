@@ -200,13 +200,14 @@ justify-content: center;
     height: 80px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     gap: 100px;
     align-items: center;
     border-radius: 40px 40px 0px 0px;
     box-shadow: var(--color--1);
-    padding-left: 400px;
-    padding-right: 400px;
+    padding-left: 200px;
+    padding-right: 200px;
     
 }
 .footer__ul li{
@@ -225,4 +226,40 @@ justify-content: center;
     object-fit: contain;
     display: flex;
     justify-content: space-between;
+}
+
+#buttonContainer{
+    display: flex;
+    overflow: hidden;
+}
+
+.boton__cohetes{
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px; /* Espacio entre botones */
+}
+.boton__cohetes:hover{
+
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.arrow-button {
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    border: 2px solid black;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.arrow-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none; /* Oculta elementos */
 }

@@ -1,25 +1,12 @@
-export async function fetchData(page = 1) {
+export async function fetchData() {
     try {
-        const response = await fetch('https://api.spacexdata.com/v4/rockets/query', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: {},
-                options: {
-                    page,
-                    limit: 1,
-                },
-            }),
-        });
-
+        const response = await fetch('https://api.spacexdata.com/v4/rockets');
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
         }
 
         const data = await response.json();
-        return data.docs; 
+        return data; 
     } catch (error) {
         console.error("Error fetching data:", error);
         return [];
@@ -60,7 +47,7 @@ export function createRocketHTML(rockets) {
                             <div class="velocimetro-background">
                             <h3>Atmospheric acceleration</h3>
                             <p>${rocket.first_stage.thrust_vacuum.kN} kn</p>
-                             <p>${rocket.first_stage.thrust_vacuum.lbf} Lbf</p
+                             <p>${rocket.first_stage.thrust_vacuum.lbf} Lbf</p>
                             </div>
                             <div class="aguja" id="aguja2"></div>
                         </div>
@@ -93,7 +80,7 @@ export function createRocketHTML(rockets) {
                             <h3>Leg material:</h3>
                             <p>${rocket.landing_legs.material}</p>
                         </div>
-                        </div>
+                    </div>
                    <div class="imagenes">
                         ${Array.isArray(rocket.flickr_images) ? rocket.flickr_images.map(img => `
                             <img class="ship" src="${img}" alt="">
@@ -134,27 +121,27 @@ export function createRocketHTML(rockets) {
                 <img src="storage/images/Bar.svg" alt="">
                 <h3>${rocket.mass.kg}</h3>
             </div>
-            <h2>DIAMETRE</h2>
+            <h2>DIAMETER</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
                 <h3>${rocket.diameter.meters}</h3>
             </div>
-            <h2>height</h2>
+            <h2>HEIGHT</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
                 <h3>${rocket.height.meters}</h3>
             </div>
-            <h2>first_stags</h2>
+            <h2>FIRST STAGE THRUST</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
                 <h3>${rocket.first_stage.thrust_sea_level.kN}</h3>
             </div>
-            <h2>lbf</h2>
+            <h2>LBF</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.first_stage.thrust_sea_level.kN}</h3>
+                <h3>${rocket.first_stage.thrust_sea_level.lbf}</h3>
             </div>
-            <h2>Range to ISS</h2>
+            <h2>REUSABILITY</h2>
             <div class="Bar">
                 <img src="storage/images/Bar.svg" alt="">
                 <h3>${rocket.reusable}</h3>
