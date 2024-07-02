@@ -1,5 +1,5 @@
 import { fetchData, createNameRocketHTML, createRocketHTML } from './modulos/rockets.js';
-import { fetchData, createNameCapsulesHTML, createCapsulesHTML} from'./modulos/capsules.js;
+
 let contador = 0;
 let rockets = [];
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-const buttonContainer = document.getElementById('buttonContainer');
+
 const rocketButtons = document.querySelectorAll('.boton__cohetes');
 const showMoreButton = document.getElementById('showMoreButton');
 
@@ -93,23 +93,8 @@ function cambiarBotones() {
 // Agregar evento de clic al botón de la flecha
 showMoreButton.addEventListener('click', cambiarBotones);
 
-async function fetchCapsule() {
-  const capsule = capsule[contador];
-  if (capsule) {
-      const namecapsuleHTML = createNameCapsuleHTML([capsule]);
-      document.querySelector('.Rockets').innerHTML = nameRocketHTML;
 
-      const rocketHTML = createRocketHTML([capsule]);
-      document.querySelector('.Rockets').innerHTML += rocketHTML;
 
-      displayImages(capsule.flickr_images);
-  }
-}
-
-function cambiarContador(valor) {
-  contador = valor;
-  fetchRocket(); 
-}
 
 
 
