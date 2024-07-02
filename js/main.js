@@ -1,5 +1,5 @@
 import { fetchData, createNameRocketHTML, createRocketHTML } from './modulos/rockets.js';
-
+import { fetchData, createNameCapsulesHTML, createCapsulesHTML} from'./modulos/capsules.js;
 let contador = 0;
 let rockets = [];
 
@@ -93,16 +93,23 @@ function cambiarBotones() {
 // Agregar evento de clic al botón de la flecha
 showMoreButton.addEventListener('click', cambiarBotones);
 
+async function fetchCapsule() {
+  const capsule = capsule[contador];
+  if (capsule) {
+      const namecapsuleHTML = createNameCapsuleHTML([capsule]);
+      document.querySelector('.Rockets').innerHTML = nameRocketHTML;
 
-const container = document.querySelector('.metrica');
+      const rocketHTML = createRocketHTML([capsule]);
+      document.querySelector('.Rockets').innerHTML += rocketHTML;
 
-const totalSteps = 1000; // Número total de pasos
-const stepAngle = 360 / totalSteps; // Ángulo entre cada paso
-
-for (let i = 0; i < totalSteps; i++) {
-    const numero = document.createElement('div');
-    numero.classList.add('numero');
-    numero.style.transform = `translateY(-50%) rotate(${i * stepAngle}deg)`;
-    numero.textContent = i + 1; // Mostrar números del 1 al 1000
-    container.appendChild(numero);
+      displayImages(capsule.flickr_images);
+  }
 }
+
+function cambiarContador(valor) {
+  contador = valor;
+  fetchRocket(); 
+}
+
+
+
