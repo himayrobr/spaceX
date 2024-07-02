@@ -33,7 +33,6 @@ body
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: linear-gradient(to right, var(--color-1), var(--color-2));
 }
 .video-background {
     position: absolute;
@@ -62,6 +61,8 @@ body
     text-transform: uppercase;
     /* background: red; */
     margin-bottom: 30px;
+    margin-top: 20px;
+    font-family:"Roboto-Regular"
 }
 .vistas{
     display: flex;
@@ -69,6 +70,7 @@ body
     align-items: center;
     margin: 0 50px;
     /* background: orange; */
+    /* background: var(--color-3); */
 
 }
 .rockets{
@@ -79,26 +81,23 @@ body
     color: var(--color-5);
     overflow-y: scroll;
     overflow: hidden;
-    /* background: black; */
+    background: var(--color-3-1);
     margin-left: 10px;
-    gap: 50px;
-    
-    
+    margin-right: 200px;
+    gap: 50px;  
 }
 
 .apilar{
     display: flex;
     flex-direction: column;
     /* background:red; */
-    margin-right:250px;
-
+    margin-right:330px;
 }
 .fila1{
     /* background: red; */
 
-
 }
-/* Estilos básicos para el velocímetro */
+
 .velocimetro {
     display: flex;
     justify-content: space-evenly;
@@ -107,30 +106,29 @@ body
     margin-left: 70px;
     margin-right: 100px;
     /* background:blueviolet; */
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     
 }
 
-.velocimetro-container {
+ .velocimetro-container { 
     position: relative;
-    width: 130px; /* Ajusta el tamaño del velocímetro según necesites */
-    height: 130px;
+    width: 150px; 
+    height: 150px;
     background: radial-gradient(circle, var(--color-4), var(--color-2));
     border-radius: 50%;
     overflow: hidden;
     color: var(--color-5);
     display: flex;
-    align-items: center;
-    
-
+    align-items: center; 
 }
+    
 
 .velocimetro-background {
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
- 
+margin: 20px;
 }
 
 .fila2{
@@ -138,8 +136,9 @@ justify-content: center;
     display: flex;
     flex-direction: row;
     margin-right: 10px;
-    gap: 20px;
-  
+    gap: 30px;
+    padding-bottom: 10px;
+    margin-top: 40px;
 }
 
 .imagenes{
@@ -148,6 +147,7 @@ justify-content: center;
     width: 340px;
     height: 340px;
     gap: 10px;
+    background: var(--color-3-1);
     
   
 }
@@ -159,41 +159,67 @@ justify-content: center;
 .informacion{
     display: flex;
     flex-direction: column;
+  
     color: var(--color-5);
     overflow-y: scroll;
     overflow: hidden;
     /* background:violet; */
+    background: var(--color-3-1);
+    padding-left: 30px;
+    padding-bottom: 70px;
 }
 .informacion2{
     display: flex;
     flex-direction: column;
+
     color: var(--color-5);
     overflow-y: scroll;
     overflow: hidden;
     /* background: blue; */
+    background: var(--color-3-1);
+    padding-right: 30px;
+    padding-bottom: 70px;
 }
+
 
 .valores{
     display: flex;
     flex-direction: column;
     color: var(--color-5);
     margin-right: 50px;
-    /* background: red; */
+    background: var(--color-3-1);
 }
-.Bar{
-    color: var(--color-5);
-    display: flex;
-    flex-direction: row;
+.bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    margin: 10px 0;
+    overflow: hidden;
 }
+
+.bar {
+    height: 30px;
+    border-radius: 25px;
+    text-align: right;
+    padding-right: 10px;
+    color: white;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+.bar.green { background-color: #4caf50; }
+.bar.blue { background-color: #2196f3; }
+.bar.red { background-color: #f44336; }
+.bar.orange { background-color: #ff9800; }
+
 .footer{
     /* background: red; */
     position: fixed;
     display: flex;
-    justify-content: center;
-    width: 100%;
-    bottom: 0px;
-  
-    /* padding: var(--space-layout-padding-lr); */
+    justify-content: flex-end;
+    width: 80%;
+    bottom: 0px; 
+    padding: var(--space-layout-padding-lr);
 }
 .footer__ul{
     background: var(--color-3);
@@ -206,8 +232,8 @@ justify-content: center;
     align-items: center;
     border-radius: 40px 40px 0px 0px;
     box-shadow: var(--color--1);
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
     
 }
 .footer__ul li{
@@ -231,6 +257,10 @@ justify-content: center;
 #buttonContainer{
     display: flex;
     overflow: hidden;
+    justify-content: flex-end;
+    /* background: red; */
+    margin-top: 60px;
+    margin-right: 20px;
 }
 
 .boton__cohetes{
@@ -241,14 +271,19 @@ justify-content: center;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-right: 10px; /* Espacio entre botones */
+    margin-right: 10px;
+    display: none;
+     
 }
+.boton__cohetes.visible {
+    display: inline-block; /* Muestra los botones de cohetes visibles */
+  }
 .boton__cohetes:hover{
 
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(61, 14, 233, 0.5 );
 }
 .arrow-button {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.1);
     color: black;
     border: 2px solid black;
     padding: 10px;
@@ -257,9 +292,5 @@ justify-content: center;
     transition: background-color 0.3s;
 }
 .arrow-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.hidden {
-    display: none; /* Oculta elementos */
+    background-color: rgba(61, 14, 233, 0.5 );
 }

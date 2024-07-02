@@ -22,7 +22,14 @@ export function createNameRocketHTML(rockets) {
 }
 
 export function createRocketHTML(rockets) {
-    return rockets.map(rocket => `
+    return rockets.map(rocket => {
+        const massPercentage = (rocket.mass.kg / 100000) * 100;
+        const diameterPercentage = (rocket.diameter.meters / 10) * 100;
+        const heightPercentage = (rocket.height.meters / 100) * 100;
+        const thrustPercentage = (rocket.first_stage.thrust_sea_level.kN / 10000) * 100;
+        const lbfPercentage = (rocket.first_stage.thrust_sea_level.lbf / 2000000) * 100;
+        const reusabilityPercentage = rocket.reusable ? 100 : 0;
+        return `
         <div class="vistas">
             <div class="rocket">
                 <div class="rockets">
@@ -115,37 +122,32 @@ export function createRocketHTML(rockets) {
                     </div>
                 </div>
             </div>
-        <section class="valores">
-            <h2>MASS</h2>
-            <div class="Bar">
-                <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.mass.kg}</h3>
-            </div>
-            <h2>DIAMETER</h2>
-            <div class="Bar">
-                <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.diameter.meters}</h3>
-            </div>
-            <h2>HEIGHT</h2>
-            <div class="Bar">
-                <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.height.meters}</h3>
-            </div>
-            <h2>FIRST STAGE THRUST</h2>
-            <div class="Bar">
-                <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.first_stage.thrust_sea_level.kN}</h3>
-            </div>
-            <h2>LBF</h2>
-            <div class="Bar">
-                <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.first_stage.thrust_sea_level.lbf}</h3>
-            </div>
-            <h2>REUSABILITY</h2>
-            <div class="Bar">
-                <img src="storage/images/Bar.svg" alt="">
-                <h3>${rocket.reusable}</h3>
-            </div>
-        </section>
-    `).join('');
+       <section class="valores">
+                    <h2>MASS</h2>
+                    <div class="bar-container">
+                        <div class="bar green" style="width: ${massPercentage}%">${rocket.mass.kg} kg</div>
+                    </div>
+                    <h2>DIAMETER</h2>
+                    <div class="bar-container">
+                        <div class="bar blue" style="width: ${diameterPercentage}%">${rocket.diameter.meters} m</div>
+                    </div>
+                    <h2>HEIGHT</h2>
+                    <div class="bar-container">
+                        <div class="bar red" style="width: ${heightPercentage}%">${rocket.height.meters} m</div>
+                    </div>
+                    <h2>FIRST STAGE THRUST</h2>
+                    <div class="bar-container">
+                        <div class="bar orange" style="width: ${thrustPercentage}%">${rocket.first_stage.thrust_sea_level.kN} kN</div>
+                    </div>
+                    <h2>LBF</h2>
+                    <div class="bar-container">
+                        <div class="bar green" style="width: ${lbfPercentage}%">${rocket.first_stage.thrust_sea_level.lbf} Lbf</div>
+                    </div>
+                    <h2>REUSABILITY</h2>
+                    <div class="bar-container">
+                        <div class="bar blue" style="width: ${reusabilityPercentage}%">${rocket.reusable ? 'Yes' : 'No'}</div>
+                    </div>
+                </section>
+    `;
+}).join('');
 }

@@ -58,24 +58,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+
+const buttonContainer = document.getElementById('buttonContainer');
+const rocketButtons = document.querySelectorAll('.boton__cohetes');
 const showMoreButton = document.getElementById('showMoreButton');
-const hiddenButtons = document.querySelectorAll('.transparent-button.hidden');
 
-let areButtonsVisible = false;
+// Contador para manejar el estado de visibilidad de los botones
 
-showMoreButton.addEventListener('click', function() {
-    if (areButtonsVisible) {
-        // Ocultar los botones adicionales
-        hiddenButtons.forEach(button => {
-            button.classList.add('hidden');
-        });
-        showMoreButton.innerHTML = '&#10148;'; // Cambiar flecha a derecha
+
+// Función para cambiar la visibilidad de los botones de cohetes
+function cambiarBotones() {
+  // Iterar sobre los botones de cohetes
+  rocketButtons.forEach((button, index) => {
+    if (contador === 0) {
+      // Mostrar los primeros dos botones
+      if (index < 2) {
+        button.style.display = 'inline-block';
+      } else {
+        button.style.display = 'none';
+      }
     } else {
-        // Mostrar los botones adicionales
-        hiddenButtons.forEach(button => {
-            button.classList.remove('hidden');
-        });
-        showMoreButton.innerHTML = '&#10149;'; // Cambiar flecha a abajo
+      // Mostrar los siguientes dos botones
+      if (index >= 2 && index < 4) {
+        button.style.display = 'inline-block';
+      } else {
+        button.style.display = 'none';
+      }
     }
-    areButtonsVisible = !areButtonsVisible; // Alternar estado de visibilidad
-});
+  });
+
+  contador = (contador + 1) % 2; // Alternar entre 0 y 1
+}
+
+// Agregar evento de clic al botón de la flecha
+showMoreButton.addEventListener('click', cambiarBotones);
+
+
+const container = document.querySelector('.metrica');
+
+const totalSteps = 1000; // Número total de pasos
+const stepAngle = 360 / totalSteps; // Ángulo entre cada paso
+
+for (let i = 0; i < totalSteps; i++) {
+    const numero = document.createElement('div');
+    numero.classList.add('numero');
+    numero.style.transform = `translateY(-50%) rotate(${i * stepAngle}deg)`;
+    numero.textContent = i + 1; // Mostrar números del 1 al 1000
+    container.appendChild(numero);
+}
