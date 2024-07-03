@@ -5,6 +5,7 @@ let contador = 0;
 let rockets = [];
 let capsules = [];
 
+// Función para cargar y mostrar datos de cohetes
 async function fetchRocket() {
     const rocket = rockets[contador];
     if (rocket) {
@@ -15,32 +16,26 @@ async function fetchRocket() {
         displayImages(rocket.flickr_images);
     }
 }
+
+// Función para cargar y mostrar datos de cápsulas
 async function fetchCapsules() {
-  const capsulesHTML = createCapsuleHTML(capsules);
-  document.querySelector('.Capsules').innerHTML = capsulesHTML;
+    const capsulesHTML = createCapsuleHTML(capsules);
+    document.querySelector('.Capsules').innerHTML = capsulesHTML;
 }
 
+// Función para cambiar el contador y actualizar la vista de cohetes
 function cambiarContador(valor) {
     contador = valor;
-    fetchRocket(); 
+    fetchRocket();
 }
 
-document.getElementById('button1').addEventListener('click', function() {
-    cambiarContador(0);
-});
+// Función para cambiar el contador y actualizar la vista de cápsulas
+function cambiarContadorCapsules(valor) {
+    contador = valor;
+    fetchCapsules();
+}
 
-document.getElementById('button2').addEventListener('click', function() {
-    cambiarContador(1);
-});
-
-document.getElementById('button3').addEventListener('click', function() {
-    cambiarContador(2);
-});
-
-document.getElementById('button4').addEventListener('click', function() {
-    cambiarContador(3);
-});
-
+// Función para mostrar imágenes de cohetes
 function displayImages(images) {
     const imageContainer = document.getElementById('imageContainer');
     imageContainer.innerHTML = '';
@@ -53,43 +48,52 @@ function displayImages(images) {
     });
 }
 
+// Función para cambiar la visibilidad de los botones de cohetes
+function cambiarBotones() {
+    const rocketButtons = document.querySelectorAll('.boton__cohetes');
+    rocketButtons.forEach((button, index) => {
+        button.style.display = index >= contador * 2 && index < contador * 2 + 2 ? 'inline-block' : 'none';
+    });
+}
+
+// Función para cambiar la visibilidad de los botones de cápsulas
+function cambiarBotonesCapsules() {
+    const capsuleButtons = document.querySelectorAll('.boton__capsule');
+    capsuleButtons.forEach((button, index) => {
+        const shouldDisplay = contador === 0 ? index < 2 : index >= 2 && index < 4;
+        button.style.display = shouldDisplay ? 'inline-block' : 'none';
+    });
+}
+
+// Eventos de clic para botones de cohetes
+document.querySelectorAll('.boton__cohetes').forEach((button, index) => {
+    button.addEventListener('click', () => cambiarContador(index));
+});
+
+// Eventos de clic para botones de cápsulas
+document.querySelectorAll('.boton__capsule').forEach((button, index) => {
+    button.addEventListener('click', () => cambiarContadorCapsules(index));
+});
+
+// Evento de carga inicial del documento
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-      rockets = await fetchRocketData();
-      capsules = await fetchCapsulesData();
-      fetchRocket(); // Inicializar con el primer cohete
-      fetchCapsules();  
-      cambiarBotones(); // Establecer la visibilidad inicial de los botones
+        rockets = await fetchRocketData();
+        capsules = await fetchCapsulesData();
+        fetchRocket(); // Inicializar con el primer cohete
+        fetchCapsules(); // Inicializar con la primera cápsula
+        cambiarBotones(); // Establecer la visibilidad inicial de los botones de cohetes
+        cambiarBotonesCapsules(); // Establecer la visibilidad inicial de los botones de cápsulas
     } catch (error) {
         console.error('Error initializing application:', error);
     }
 });
 
-const rocketButtons = document.querySelectorAll('.boton__cohetes');
 const showMoreButton = document.getElementById('showMoreButton');
+const showMoreButtonCapsules = document.getElementById('showMoreButtonCapsules');
 
-// Función para cambiar la visibilidad de los botones de cohetes
-function cambiarBotones() {
-  rocketButtons.forEach((button, index) => {
-    if (contador === 0) {
-      // Mostrar los primeros dos botones
-      if (index < 2) {
-        button.style.display = 'inline-block';
-      } else {
-        button.style.display = 'none';
-      }
-    } else {
-      // Mostrar los siguientes dos botones
-      if (index >= 2 && index < 4) {
-        button.style.display = 'inline-block';
-      } else {
-        button.style.display = 'none';
-      }
-    }
-  });
-
-  contador = (contador + 1) % 2; // Alternar entre 0 y 1
-}
-
-// Agregar evento de clic al botón de la flecha
+// Evento de clic para mostrar más botones de cohetes
 showMoreButton.addEventListener('click', cambiarBotones);
+
+// Evento de clic para mostrar más botones de cápsulas
+showMoreButtonCapsules.addEventListener('click', cambiarBotonesCapsules);

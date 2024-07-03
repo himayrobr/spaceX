@@ -128,7 +128,7 @@ body
     margin-right: 20px;
 }
 
-.boton__cohetes{
+.boton__capsule{
     background-color: rgba(255, 255, 255, 0);
     color: black;
     border: 2px solid black;
@@ -140,10 +140,10 @@ body
     display: none;
      
 }
-.boton__cohetes.visible {
+.boton__capsule.visible {
     display: inline-block; /* Muestra los botones de cohetes visibles */
   }
-.boton__cohetes:hover{
+.boton__capsule:hover{
 
     background-color: rgba(61, 14, 233, 0.5 );
 }
