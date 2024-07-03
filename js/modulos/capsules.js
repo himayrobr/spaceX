@@ -12,9 +12,6 @@ export async function fetchData() {
         return [];
     }
 }
-
-
-
 export function createCapsuleHTML(capsules) {
     return capsules.map(capsule => {
         return `
@@ -62,7 +59,7 @@ export function createCapsuleHTML(capsules) {
     <div class="last_update">
 <div class="water_landings">
 <h2>Water_landings</h2>
-<h3>${capsule.Water_landings}</h3>
+<h3>${capsule.water_landings}</h3>
 </div>
 </section>
   
