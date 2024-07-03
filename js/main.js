@@ -7,10 +7,8 @@ async function fetchRocket() {
     const rocket = rockets[contador];
     if (rocket) {
         const nameRocketHTML = createNameRocketHTML([rocket]);
-        document.querySelector('.Rockets').innerHTML = nameRocketHTML;
-
         const rocketHTML = createRocketHTML([rocket]);
-        document.querySelector('.Rockets').innerHTML += rocketHTML;
+        document.querySelector('.Rockets').innerHTML = nameRocketHTML + rocketHTML;
 
         displayImages(rocket.flickr_images);
     }
@@ -53,22 +51,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         rockets = await fetchData();
         fetchRocket(); // Inicializar con el primer cohete
+        cambiarBotones(); // Establecer la visibilidad inicial de los botones
     } catch (error) {
         console.error('Error initializing application:', error);
     }
 });
 
-
-
 const rocketButtons = document.querySelectorAll('.boton__cohetes');
 const showMoreButton = document.getElementById('showMoreButton');
 
-// Contador para manejar el estado de visibilidad de los botones
-
-
 // Función para cambiar la visibilidad de los botones de cohetes
 function cambiarBotones() {
-  // Iterar sobre los botones de cohetes
   rocketButtons.forEach((button, index) => {
     if (contador === 0) {
       // Mostrar los primeros dos botones
@@ -92,9 +85,3 @@ function cambiarBotones() {
 
 // Agregar evento de clic al botón de la flecha
 showMoreButton.addEventListener('click', cambiarBotones);
-
-
-
-
-
-
