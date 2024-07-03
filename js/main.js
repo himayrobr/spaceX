@@ -1,7 +1,9 @@
-import { fetchData, createNameRocketHTML, createRocketHTML } from './modulos/rockets.js';
+import { fetchData as fetchRocketData, createNameRocketHTML, createRocketHTML } from './modulos/rockets.js';
+import { fetchData as fetchCapsulesData, createCapsuleHTML } from './modulos/capsules.js';
 
 let contador = 0;
 let rockets = [];
+let capsules = [];
 
 async function fetchRocket() {
     const rocket = rockets[contador];
@@ -12,6 +14,10 @@ async function fetchRocket() {
 
         displayImages(rocket.flickr_images);
     }
+}
+async function fetchCapsules() {
+  const capsulesHTML = createCapsuleHTML(capsules);
+  document.querySelector('.Capsules').innerHTML = capsulesHTML;
 }
 
 function cambiarContador(valor) {
@@ -49,9 +55,11 @@ function displayImages(images) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        rockets = await fetchData();
-        fetchRocket(); // Inicializar con el primer cohete
-        cambiarBotones(); // Establecer la visibilidad inicial de los botones
+      rockets = await fetchRocketData();
+      capsules = await fetchCapsulesData();
+      fetchRocket(); // Inicializar con el primer cohete
+      fetchCapsules();  
+      cambiarBotones(); // Establecer la visibilidad inicial de los botones
     } catch (error) {
         console.error('Error initializing application:', error);
     }
