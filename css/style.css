@@ -221,7 +221,7 @@ margin: 20px;
 .bar.orange { background-color: #ff9800; }
 
 .footer{
-    background: red;
+    /* background: red; */
     position: fixed;
     display: flex;
     justify-content: flex-end;
