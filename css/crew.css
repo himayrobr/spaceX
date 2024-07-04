@@ -32,6 +32,7 @@ body
 .contenedores{
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
     margin-top: 80px;
 
@@ -41,19 +42,28 @@ body
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+    background: var(--color-3-1);
+    height: 80%;
 }
 .perfil{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   height: 90%;
-  background: red;
 
 }
 .perfil img{
     border-radius: 50%;
     height: 500px;
     width: 500px;
+}
+.info2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    background: var(--color-3-1);
+    height: 80%;
 }
 .footer{
     /* background: red; */
